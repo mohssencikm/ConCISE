@@ -21,12 +21,19 @@ Compute correlation with human ratings and evaluate pairwise agreement
 ConCISE/
 │
 ├── __init__.py
+
 ├── api.py               # LLM wrapper and API call manager
+
 ├── verbose.py           # Verbose version generation
+
 ├── summarization.py     # Summarization and word-pruning operations
+
 ├── scoring.py           # LLM-based scoring functions and compression ratio
+
 ├── ranking.py           # Pairwise ranking using LLM
+
 ├── evaluation.py        # Spearman, Kendall correlation calculations
+
 ├── utils.py             # Helper functions (e.g. word counting)
 
 
@@ -38,10 +45,11 @@ Python 3.8+
 
 A working OpenAI or Anthropic API key (e.g., for GPT-4 or Claude)
 
+```python
 openai, pandas, scipy
 
 pip install openai pandas scipy
-
+```
 
 2. Initialize Your LLM Model
 from openai import OpenAI

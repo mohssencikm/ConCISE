@@ -16,7 +16,7 @@ Compute correlation with human ratings and evaluate pairwise agreement
 
 
 
-🔧 Project Structure
+🔧 **Project Structure**
 
 ConCISE/
 │
@@ -37,7 +37,7 @@ ConCISE/
 ├── utils.py             # Helper functions (e.g. word counting)
 
 
-🚀 Getting Started
+🚀 **Getting Started**
 1. Install Dependencies
 You need:
 
@@ -51,70 +51,82 @@ openai, pandas, scipy
 pip install openai pandas scipy
 ```
 
+
+
 2. Initialize Your LLM Model
+```python
 from openai import OpenAI
 from genrait_conciseness.api import LLMModelWrapper
 
 client = OpenAI(api_key="your-key-here")
 llm_model = LLMModelWrapper(client)
+```
 
 
-🧪 Core Functionality
+
+🧪 **Core Functionality**
 Generate Verbose Answers
-
+```python
 from genrait_conciseness.verbose import make_verbose_version
 
 verbose = make_verbose_version(llm_model, original_answer)
+```
 
 
 
-Generate Summaries & Pruned Text
+**Generate Summaries & Pruned Text**
+```python
 from genrait_conciseness.summarization import make_summary
 
 abstractive, extractive, pruned = make_summary(llm_model, original_answer)
+```
 
 
 
-Compute Conciseness Score (GPT)
+**Compute Conciseness Score (GPT)**
+```python
 from genrait_conciseness.scoring import GPTSCORE
 
 score = GPTSCORE(llm_model, original_answer)
+```
 
 
-
-Rank Answers by Conciseness
+**Rank Answers by Conciseness**
+```python
 from genrait_conciseness.ranking import GPTRanking
 
 better = GPTRanking(llm_model, question, answer1, answer2)  # returns "answer 1" or "answer 2"
+```
 
 
-
-Correlation with Human Ratings
+**Correlation with Human Ratings**
+```python
 from genrait_conciseness.evaluation import spearman_corr, kendall_corr
 
 rho, p_val = spearman_corr(human_scores, concise_scores)
+```
 
 
-
-📊 Example Pipeline
+📊 **Example Pipeline**
+```python
 import pandas as pd
 from genrait_conciseness.api import LLMModelWrapper
 from genrait_conciseness.verbose import make_verbose_version
 from genrait_conciseness.scoring import GPTSCORE
 from genrait_conciseness.utils import count_words
 
-# Load dataset
+# **Load dataset**
 df = pd.read_csv("your_data.csv")
 
-# Generate verbose answers
+# **Generate verbose answers**
 df["verbose"] = df["answer"].apply(lambda x: make_verbose_version(llm_model, x))
 
-# Score answers
+# **Score answers**
 df["score"] = df["answer"].apply(lambda x: GPTSCORE(llm_model, x))
+```
 
 
-
-📁 Dataset
+📁 **Dataset**
 The code is designed to work with WikiEval, but can easily be adapted for any question-answer dataset with at least:
 
 question
@@ -122,10 +134,10 @@ question
 answer
 
 
-🪪 License
+🪪 **License**
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-🙏 Acknowledgements
+🙏 **Acknowledgements**
 This work is inspired by recent developments in LLM evaluation such as:
 
 RAGAS (arXiv:2309.15217)

@@ -7,7 +7,7 @@ def make_verbose_version(llm_model, answer):
     Generates a verbose version of the given answer using the LLM.
     """
     result = llm_model.chat_completion(
-        model="bedrock-claude-3-sonnet",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": '''
 You are a language model that verbosely rewrites answers without changing their meaning.

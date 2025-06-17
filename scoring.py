@@ -7,7 +7,7 @@ def GPTSCORE(llm_model, answer):
     Returns a conciseness score (0-10) for the given answer.
     """
     result = llm_model.chat_completion(
-        model="gpt-4o_v2024-05-13",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": '''
 Conciseness measures how efficiently an answer conveys its intended information. A 

@@ -34,7 +34,6 @@ ConCISE/
 
 ├── evaluation.py        # Spearman, Kendall correlation calculations
 
-├── utils.py             # Helper functions (e.g. word counting)
 
 
 🚀 **Getting Started**

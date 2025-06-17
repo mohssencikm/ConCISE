@@ -56,7 +56,7 @@ pip install openai pandas scipy
 2. Initialize Your LLM Model
 ```python
 from openai import OpenAI
-from genrait_conciseness.api import LLMModelWrapper
+from api import LLMModelWrapper
 
 client = OpenAI(api_key="your-key-here")
 llm_model = LLMModelWrapper(client)
@@ -67,7 +67,7 @@ llm_model = LLMModelWrapper(client)
 🧪 **Core Functionality**
 Generate Verbose Answers
 ```python
-from genrait_conciseness.verbose import make_verbose_version
+from verbose import make_verbose_version
 
 verbose = make_verbose_version(llm_model, original_answer)
 ```
@@ -76,7 +76,7 @@ verbose = make_verbose_version(llm_model, original_answer)
 
 **Generate Summaries & Pruned Text**
 ```python
-from genrait_conciseness.summarization import make_summary
+from summarization import make_summary
 
 abstractive, extractive, pruned = make_summary(llm_model, original_answer)
 ```
@@ -85,7 +85,7 @@ abstractive, extractive, pruned = make_summary(llm_model, original_answer)
 
 **Compute Conciseness Score (GPT)**
 ```python
-from genrait_conciseness.scoring import GPTSCORE
+from scoring import GPTSCORE
 
 score = GPTSCORE(llm_model, original_answer)
 ```
@@ -93,7 +93,7 @@ score = GPTSCORE(llm_model, original_answer)
 
 **Rank Answers by Conciseness**
 ```python
-from genrait_conciseness.ranking import GPTRanking
+from ranking import GPTRanking
 
 better = GPTRanking(llm_model, question, answer1, answer2)  # returns "answer 1" or "answer 2"
 ```
@@ -101,7 +101,7 @@ better = GPTRanking(llm_model, question, answer1, answer2)  # returns "answer 1"
 
 **Correlation with Human Ratings**
 ```python
-from genrait_conciseness.evaluation import spearman_corr, kendall_corr
+from evaluation import spearman_corr, kendall_corr
 
 rho, p_val = spearman_corr(human_scores, concise_scores)
 ```
@@ -110,10 +110,10 @@ rho, p_val = spearman_corr(human_scores, concise_scores)
 📊 **Example Pipeline**
 ```python
 import pandas as pd
-from genrait_conciseness.api import LLMModelWrapper
-from genrait_conciseness.verbose import make_verbose_version
-from genrait_conciseness.scoring import GPTSCORE
-from genrait_conciseness.utils import count_words
+from api import LLMModelWrapper
+from verbose import make_verbose_version
+from scoring import GPTSCORE
+from utils import count_words
 
 # **Load dataset**
 df = pd.read_csv("your_data.csv")

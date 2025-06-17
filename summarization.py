@@ -8,7 +8,7 @@ def make_summary(llm_model, answer):
     Returns a tuple: (abstractive, extractive, pruned)
     """
     result = llm_model.chat_completion(
-        model="bedrock-claude-3-sonnet",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": '''
 Given a question-answer pair, generate three versions of the answer using the following techniques:
